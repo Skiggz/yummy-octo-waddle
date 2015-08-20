@@ -149,8 +149,11 @@ div.application .bottom-corner {
     -ms-transform: rotate(-45deg);
     -o-transform: rotate(-45deg);
     transform: rotate(-45deg);
-    /* any style changes should change in a linear fashion over a one second */
-    transition: all 1s linear;
+    /* 
+    	any style changes should change in a "ease-in" fashion over a one second 
+    	ease in gradually changes values at a higher delta as time passes
+	*/
+    transition: all 1s ease-in;
 }
 
 /*
