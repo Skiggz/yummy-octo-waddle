@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- add a title, look at your browser tab or window, cool! -->
+	<title>Skiggz Webpage</title>
+
+	<!-- External/Unobtrusive Resources -->
+	<!-- load an external javascript file location in the current directory, named app.js -->
+	<script type="text/javascript" src="app.js"></script>
+	<!-- load an external stylesheet located in the current directory named home.css -->
+	<link rel="stylesheet" type="text/css" href="home.css">
+
+	<!-- Internal/Obtrusive/Inline Resources -->
+	<script type="text/javascript">
+		// when the page loads all DOM content, start binding event listeners to the dom nodes
+		document.addEventListener('DOMContentLoaded', function(event) {
+			// add a click listener to our button
+			document.querySelector('button').addEventListener('click', function(e) {
+				// browser default alert behavior
+				alert('I can haz event listenerz');
+			});
+			// add a click listener to our anchor tag
+			document.querySelector('a').addEventListener('click', function(e) {
+				// grab the value of our input identified by id "name"
+				var name = document.querySelector('input');
+				// change the hash location
+				window.location.hash = (name || '') && name.value;
+				// call the hashPopup() method we defined in our external js (app.js)
+				hashPopup();
+			});
+			// define a variable that references an annonymous function
+			var open = function() {
+				// add a css class to the application div
+				document.querySelector('.application').classList.add('ready');
+			};
+			// bind our open function to the top and bottom corner dom nodes on click
+			document.querySelector('.top-corner').addEventListener('click', open);
+			document.querySelector('.bottom-corner').addEventListener('click', open);
+		});
+	</script>
+	<style type="text/css">
+		body {
+			/* make the page prettier than just a white background */
+			background-color: rgb(240, 255, 255);
+			/* specify that we want to fill the page with content vs shrink around it by default */
+			width: 100vw;
+			height: 100vh;
+			/* flexbox */
+			display: flex;
+			/* center items using flex box (vertically) */
+		    align-items: center;
+		    /* explicitly define our "root" font size */
+			font-size: 100%;
+		}
+	</style>
+</head>
+<body>	
+	<div class="application">
+		<!-- title is a default browser attribute that creates little hover popups -->
+		<span class="top-corner" title="Enter"></span>
+		<span class="bottom-corner" title="Enter"></span>
+	    <p>Hey there!</p>
+	    <button>Click me!</button>
+	    <div>
+	    	<input type="text" id="name" placeholder="Name" />
+	    	<!-- a blank href will redirect the user back to the page (reload the page) -->
+	    	<!-- usually you will see something like "http://google.com" or a relative url "/foo" -->
+	    	<a href="">Make me a trickster!</a>
+    	</div>	
+	</div>
+</body>
+</html>
